@@ -10,7 +10,7 @@
 }
 
 .logo-container {
-    width: 30%;
+    width: 40%;
 }
 
 .logo-container h1 {
@@ -19,13 +19,13 @@
 }
 
 .logo-container span {
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 
 .profile-container {
     display: flex;
-    width: 40%;
+    width: 60%;
     justify-content: flex-end;
     padding-top: 22px;
     padding-left: 20px;
@@ -45,4 +45,32 @@
     width: 55px;
     border-radius: 50%;
     background-color: red;
+}
+
+@media only screen and (max-width: 819px){
+    .logo-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .logo-container span {
+        font-size: 0.5rem;
+        margin: 0;
+    }
+
+    .name {
+        font-size: 1rem;
+    }
+
+    .profile-container {
+        padding: 0;
+    }
+
+    .title {
+        padding: 0;
+        font-size: 0.7rem;
+    }
+
+    img {
+        margin-left: 5px;
+    }
 }
