@@ -1,0 +1,48 @@
+/* Class Selector */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.logo-container {
+    width: 30%;
+}
+
+.logo-container h1 {
+    font-size: 2.8rem;
+    font-family: 'Dancing Script', cursive;
+}
+
+.logo-container span {
+    margin-left: 20%;
+}
+
+
+.profile-container {
+    display: flex;
+    width: 40%;
+    justify-content: flex-end;
+    padding-top: 22px;
+    padding-left: 20px;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-family: cursive;
+}
+
+.title {
+    padding: 0px 10px;
+}
+
+.img {
+    margin-left: 20px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: red;
+}
