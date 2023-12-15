@@ -1,0 +1,140 @@
+header {
+    padding: 5px 20px;
+    font-size: 0.9rem;
+    color: rgb(85, 81, 81);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    padding: 7px;
+}
+
+
+
+.body {
+    display: flex;
+    width: 90%;
+    margin: 20px auto;
+    justify-content: space-between;
+}
+
+.container {
+    padding-bottom: 30px;
+    height: auto;
+    width: auto;
+    min-width: 300px;
+    background-color: rgb(177, 233, 233);
+    border-radius: 15px;
+}
+
+.last-container {
+    width: 40px;
+    height: auto;
+    background-color: rgb(177, 233, 233);
+}
+
+.list {
+    display: flex;
+    width: 80%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    margin: auto;
+    text-align: start;
+}
+
+.photo {
+    width: 40px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    margin-right: 25px;
+}
+
+.date {
+    font-size: 0.7rem;
+}
+
+.title {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.desc {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.list-item {
+    width: 75%;
+}
+
+.edit {
+    width: 60px;
+    background-color: rgb(153, 239, 239);
+    border-radius: 40px;
+    border: none;
+    padding: 7px 20px 5px;
+    margin: 20px auto 10px 35px;
+    cursor: pointer;
+}
+
+.item {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    margin: 20px auto;
+    text-align: start;
+}
+
+.second {
+    width: 40px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    margin-right: 7pxpx
+}
+
+.item-title {
+    font-size: 0.7rem;
+    padding-top: 7px;
+}
+
+.item-date {
+    font-size: 0.7rem;
+    padding-top: 7.5px;
+}
+
+.item-icon {
+    padding-top: 3px;
+}
+
+.plus {
+    padding: 4px 10px;
+    width: 60px;
+    background-color: rgb(109, 234, 234);
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 819px){
+    .body {
+        display: block;
+    }
+
+    .container {
+        margin-bottom: 30px;
+    }
+}
