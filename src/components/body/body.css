@@ -4,6 +4,10 @@ header {
     color: rgb(85, 81, 81);
 }
 
+.FontAwesomeIcon {
+    cursor: pointer;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -11,30 +15,29 @@ header {
 
 .icon {
     padding: 7px;
+    cursor: pointer;
 }
 
 
 
 .body {
     display: flex;
-    width: 90%;
+    width: 98%;
     margin: 20px auto;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .container {
     padding-bottom: 30px;
     height: auto;
-    width: auto;
-    min-width: 300px;
+    min-height: 200px;
+    min-width: 320px;
+    width: 400px;
     background-color: rgb(177, 233, 233);
     border-radius: 15px;
-}
-
-.last-container {
-    width: 40px;
-    height: auto;
-    background-color: rgb(177, 233, 233);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .list {
@@ -85,6 +88,15 @@ header {
     cursor: pointer;
 }
 
+.add{
+     background-color: white;
+     border-radius: 40px;
+     width: 70px;
+     padding: 7px 20px 5px;
+     cursor: pointer;
+     margin-left: 50px;
+}
+
 .item {
     display: flex;
     justify-content: space-around;
@@ -105,14 +117,9 @@ header {
     margin-right: 7pxpx
 }
 
-.item-title {
+.item-title, .item-date {
     font-size: 0.7rem;
     padding-top: 7px;
-}
-
-.item-date {
-    font-size: 0.7rem;
-    padding-top: 7.5px;
 }
 
 .item-icon {
@@ -128,13 +135,44 @@ header {
     cursor: pointer;
 }
 
+.addingItemDiv {
+    height: auto;
+    width: 320px;
+    margin-right: auto;
+    margin-left: auto;
+    margin: auto;
+    position: absolute;
+    z-index: 3;
+    background-color: rgb(177, 233, 233);
+    padding: 20px;
+    display: none;
+}
 
-@media only screen and (max-width: 819px){
-    .body {
+.addingItemDiv span {
+    color: red;
+}
+
+.inputDiv {
+    margin: 20px auto;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+@media only screen and (max-width: 1300px){
+    /* .body {
         display: block;
-    }
+    } */
 
     .container {
         margin-bottom: 30px;
+        width: 250px;
+    }
+
+    .addingItemDiv {
+        left: 38px;
     }
 }
