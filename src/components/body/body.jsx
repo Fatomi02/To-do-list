@@ -39,7 +39,7 @@ function Body() {
 
 
   const addItem = () => {
-    if (taskTitle.length > 1 && taskDate.length > 1 && taskDesc.length > 1) {
+    if (taskTitle.length > 2 && taskDate.length > 2 && taskDesc.length > 2) {
       const generatedId = Math.floor(Math.random() * 1000 + 4);
       const newArr = {
         id: generatedId,
@@ -53,8 +53,6 @@ function Body() {
       clearInput();
       document.querySelector(".addingItemDiv").style.display = "none";
     }
-
-
   };
 
   const close = () => {
@@ -63,7 +61,6 @@ function Body() {
 
   useEffect(() => {
     setItems(lists.list);
-    console.log()
   }, []);
 
   return (
@@ -149,6 +146,7 @@ function Body() {
                     Close
                   </button>
                 </div>
+             
               </div>
             </div>
           </header>

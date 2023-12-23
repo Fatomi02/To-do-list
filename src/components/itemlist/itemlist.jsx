@@ -26,10 +26,22 @@ function ItemList() {
     setTodos(copyItems);
   };
 
-  const handleChange = (e) => {
-    setTodos((prev) => {
-      return { ...prev, title: e.target.value };
-    });
+  const handleChange = (e, itemId) => {
+    const copyItems = [...todos];
+    copyItems[itemId].title = e.target.value;
+    setTodos(copyItems);
+  };
+
+  const handleChangeDate = (e, itemId) => {
+    const copyItems = [...todos];
+    copyItems[itemId].date = e.target.value;
+    setTodos(copyItems);
+  };
+  
+  const handleChangeDesc = (e, itemId) => {
+    const copyItems = [...todos];
+    copyItems[itemId].description = e.target.value;
+    setTodos(copyItems);
   };
 
   useEffect(() => {
@@ -63,7 +75,7 @@ function ItemList() {
                 }}
                 type="text"
                 value={item.title}
-                onChange={handleChange}
+                onChange={(e)=> handleChange(e, index)}
               />{" "}
               <br />
               <input
@@ -75,6 +87,8 @@ function ItemList() {
                   margin: "10px auto",
                 }}
                 type="text"
+                value={item.date}
+                onChange={(e)=> handleChangeDate(e, index)}
                 required
               />{" "}
               <br />
@@ -86,6 +100,8 @@ function ItemList() {
                   padding: "10px",
                 }}
                 type="text"
+                value={item.description}
+                onChange={(e)=> handleChangeDesc(e, index)}
                 required
               />
               <button
