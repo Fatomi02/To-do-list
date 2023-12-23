@@ -76,6 +76,11 @@ header {
 
 .list-item {
     width: 75%;
+    
+}
+
+.listed-item {
+    height: auto;
 }
 
 .edit {
@@ -101,7 +106,7 @@ header {
     display: flex;
     justify-content: space-around;
     width: 80%;
-    height: 50px;
+    height: auto;
     padding: 10px;
     background-color: white;
     border-radius: 15px;
@@ -137,7 +142,7 @@ header {
 
 .addingItemDiv {
     height: auto;
-    width: 320px;
+    width: 310px;
     margin-right: auto;
     margin-left: auto;
     margin: auto;
@@ -173,6 +178,6 @@ label {
     }
 
     .addingItemDiv {
-        left: 38px;
+        right: 10%;
     }
 }

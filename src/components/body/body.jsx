@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "./body.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditableText from "../edit/edit";
+import ItemList from "../itemlist/itemlist";
 import { lists } from "../../services/user-details";
 
 function Body() {
@@ -9,6 +11,8 @@ function Body() {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskDesc, setTaskDesc] = useState("");
+  const [items, setItems] = useState(lists.list);
+
 
   const handleTitle = (e) => {
     setTaskTitle(e.target.value);
@@ -28,19 +32,21 @@ function Body() {
     setTaskDesc(e.target.value);
   };
 
+
   const addNewItem = () => {
     document.querySelector(".addingItemDiv").style.display = "block";
   };
 
 
   const addItem = () => {
-    if(taskTitle.length > 1 && taskDate.length > 1 && taskDesc.length > 1){
+    if (taskTitle.length > 1 && taskDate.length > 1 && taskDesc.length > 1) {
       const generatedId = Math.floor(Math.random() * 1000 + 4);
       const newArr = {
         id: generatedId,
         title: taskTitle,
         date: taskDate,
         description: taskDesc,
+        isEditing: false,
       };
       setNewTask(newArr);
       items.push(newArr);
@@ -48,52 +54,17 @@ function Body() {
       document.querySelector(".addingItemDiv").style.display = "none";
     }
 
-    
+
   };
 
   const close = () => {
     document.querySelector(".addingItemDiv").style.display = "none";
   }
 
-  const [items, setItems] = useState([]);
-
   useEffect(() => {
     setItems(lists.list);
+    console.log()
   }, []);
-
-  const deleteList = (id) => {
-    const newItems = items.filter((item) => item.id !== id);
-    setItems(newItems);
-  };
-
-  let itemList = items.map((item) => {
-    return (
-      <>
-        <div className="item">
-          <div className="second"></div>
-          <div className="item-title">{item.title}</div>
-          <div className="item-date">{item.date}</div>
-          <div className="item-icon">
-            <FontAwesomeIcon
-              className="FontAwesomeIcon"
-              icon="fa-solid fa-trash"
-              size="sm"
-              style={{ color: "#d33139", marginRight: "5px" }}
-              onClick={() => {
-                deleteList(item.id);
-              }}
-            />
-            <FontAwesomeIcon
-              className="FontAwesomeIcon"
-              icon="fa-solid fa-ellipsis-vertical"
-              size="sm"
-              style={{ color: "#111213" }}
-            />
-          </div>
-        </div>
-      </>
-    );
-  });
 
   return (
     <>
@@ -133,7 +104,7 @@ function Body() {
                       required
                     />
                     <span>{taskTitle.length <= 1 ? "Title must be more than 2 Character" : ""}</span>
-                    
+
                   </div>
                   <div className="inputDiv">
                     <label htmlFor="date">Date: </label>
@@ -151,7 +122,7 @@ function Body() {
                       placeholder="20 Feb 2024"
                       required
                     />
-                    <span>{taskDate.length <= 1 ? "Date must be more than 2 Character" : ""}</span> 
+                    <span>{taskDate.length <= 1 ? "Date must be more than 2 Character" : ""}</span>
                   </div>
                   <div className="inputDiv">
                     <label htmlFor="desc">Desscription: </label>
@@ -182,7 +153,7 @@ function Body() {
             </div>
           </header>
           <EditableText />
-          {itemList}
+          <ItemList />
           <div className="item">
             <button onClick={addNewItem} className="plus">
               <FontAwesomeIcon
@@ -228,6 +199,7 @@ function Body() {
       </div>
     </>
   );
+
 }
 
 export default Body;
