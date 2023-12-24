@@ -139,7 +139,12 @@ function Body() {
                     <label htmlFor="desc">Desscription: </label>
                     <input
                       id="desc"
-                      {...register('desc')}
+                      {...register('desc', {
+                        required: true,
+                        validate: {
+                          minLength: (v) => v.length >= 5
+                        }
+                      })}
                       type="text"
                       value={taskDesc}
                       onChange={handleDesc}
@@ -151,7 +156,7 @@ function Body() {
                       }}
                       required
                     />
-                    {errors.title?.type === "minLength" && (
+                    {errors.desc?.type === "minLength" && (
                 <small>The Description should have at least 10 characters</small>
                  )}
                   </div>
@@ -159,7 +164,7 @@ function Body() {
                     <button className="add" type="submit" onClick={addItem}>
                     Create
                   </button></>) : (<>
-                  <button className="add" style={{backgroundColor: "red"}}>Invalid</button>
+                  <button className="add">Create</button>
                   </>)}
                   <button className="add" onClick={close}>
                     Close
