@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditableText from "../edit/edit";
 import ItemList from "../itemlist/itemlist";
 import { lists } from "../../services/user-details";
+import { useForm } from 'react-hook-form';
 
 function Body() {
   const [newTask, setNewTask] = useState(lists);
@@ -12,6 +13,9 @@ function Body() {
   const [taskDate, setTaskDate] = useState("");
   const [taskDesc, setTaskDesc] = useState("");
   const [items, setItems] = useState(lists.list);
+
+  
+  const {register, handleSubmit, formState: { errors },} = useForm();
 
 
   const handleTitle = (e) => {
@@ -39,7 +43,7 @@ function Body() {
 
 
   const addItem = () => {
-    if (taskTitle.length > 2 && taskDate.length > 2 && taskDesc.length > 2) {
+    if (taskTitle.length >= 1 && taskDate.length >= 1 && taskDesc.length >= 1) {
       const generatedId = Math.floor(Math.random() * 1000 + 4);
       const newArr = {
         id: generatedId,
@@ -85,10 +89,17 @@ function Body() {
                   style={{ color: "#111213" }}
                 />
                 <div className="addingItemDiv">
+                  <form onSubmit={handleSubmit((d) => console.log(d))}>
                   <div className="inputDiv">
                     <label htmlFor="title">Title: </label>
                     <input
                       id="title"
+                      {...register('title', {
+                        required: true,
+                        validate: {
+                          minLength: (v) => v.length >= 5
+                        },
+                      })}
                       type="text"
                       value={taskTitle}
                       onChange={handleTitle}
@@ -100,14 +111,18 @@ function Body() {
                       }}
                       required
                     />
-                    <span>{taskTitle.length <= 1 ? "Title must be more than 2 Character" : ""}</span>
+                     {/* {errors.title?.type === "minLength" && (
+    <small>The username should have at least 5 characters</small>
+  )} */}
+                     
 
                   </div>
                   <div className="inputDiv">
                     <label htmlFor="date">Date: </label>
                     <input
-                      type="text"
+                      type="date"
                       id="date"
+                      {...register('date')}
                       value={taskDate}
                       onChange={handleDate}
                       style={{
@@ -119,15 +134,16 @@ function Body() {
                       placeholder="20 Feb 2024"
                       required
                     />
-                    <span>{taskDate.length <= 1 ? "Date must be more than 2 Character" : ""}</span>
+                    {/* <span>{taskDate.length <= 1 ? "Date must be more than 2 Character" : ""}</span> */}
                   </div>
                   <div className="inputDiv">
                     <label htmlFor="desc">Desscription: </label>
                     <input
+                      id="desc"
+                      {...register('desc')}
                       type="text"
                       value={taskDesc}
                       onChange={handleDesc}
-                      id="desc"
                       style={{
                         height: "30px",
                         width: "100%",
@@ -136,15 +152,18 @@ function Body() {
                       }}
                       required
                     />
-                    <span>{taskDesc.length <= 1 ? "Descripton must be more than 2 Character" : ""}</span>
+                    {/* <span>{taskDesc.length <= 1 ? "Descripton must be more than 2 Character" : ""}</span> */}
                   </div>
-
-                  <button className="add" onClick={addItem}>
+                    {taskTitle.length >= 1 && taskDate.length >= 1 && taskDesc.length >= 1 ? (<>
+                      <button className="add" type="submit" onClick={addItem}>
                     Add
-                  </button>
+                  </button></>) : (<>
+                  <button className="add" style={{backgroundColor: "red"}}>Invalid</button>
+                  </>)}
                   <button className="add" onClick={close}>
                     Close
                   </button>
+                  </form>
                 </div>
              
               </div>
@@ -193,6 +212,9 @@ function Body() {
               </div>
             </div>
           </header>
+        </div>
+
+        <div className="last">
         </div>
       </div>
     </>

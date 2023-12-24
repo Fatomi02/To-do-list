@@ -32,12 +32,13 @@ header {
     padding-bottom: 30px;
     height: auto;
     min-height: 200px;
-    min-width: 300px;
-    width: 350px;
+    min-width: 360px;
+    width: aut0;
     background-color: rgb(177, 233, 233);
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 1px 1px 1px 1px black;
 }
 
 .list {
@@ -45,7 +46,7 @@ header {
     width: 80%;
     padding: 20px;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 15px;
     margin: auto;
     text-align: start;
 }
@@ -97,7 +98,7 @@ header {
      background-color: white;
      border-radius: 40px;
      width: 70px;
-     padding: 7px 20px 5px;
+     padding: 7px 15px 5px;
      cursor: pointer;
      margin-left: 50px;
 }
@@ -119,7 +120,7 @@ header {
     height: 30px;
     border-radius: 10px;
     background-color: aquamarine;
-    margin-right: 7pxpx
+    margin-right: 7px
 }
 
 .item-title, .item-date {
@@ -151,6 +152,8 @@ header {
     background-color: rgb(177, 233, 233);
     padding: 20px;
     display: none;
+    box-shadow: 1px 1px 1px 1px black;
+    border-radius: 10px;
 }
 
 .addingItemDiv span {
@@ -166,18 +169,28 @@ label {
     font-weight: 700;
 }
 
+.last {
+    width: 100px;
+    height: auto;
+    background-color: rgb(177, 233, 233);
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
 
 @media only screen and (max-width: 1300px){
-    /* .body {
-        display: block;
-    } */
 
     .container {
         margin-bottom: 30px;
-        width: 250px;
+        min-width: 320px;
+        width: auto;
     }
 
     .addingItemDiv {
         right: 10%;
+    }
+
+    .last {
+        display: none;
     }
 }

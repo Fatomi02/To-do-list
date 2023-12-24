@@ -86,7 +86,7 @@ function ItemList() {
                   padding: "10px",
                   margin: "10px auto",
                 }}
-                type="text"
+                type="date"
                 value={item.date}
                 onChange={(e)=> handleChangeDate(e, index)}
                 required
