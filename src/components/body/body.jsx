@@ -15,7 +15,7 @@ function Body() {
   const [items, setItems] = useState(lists.list);
 
   
-  const {register, handleSubmit, formState: { errors },} = useForm();
+  const {register, handleSubmit, formState: { errors }} = useForm();
 
 
   const handleTitle = (e) => {
@@ -61,6 +61,7 @@ function Body() {
 
   const close = () => {
     document.querySelector(".addingItemDiv").style.display = "none";
+    clearInput();
   }
 
   useEffect(() => {
@@ -98,7 +99,7 @@ function Body() {
                         required: true,
                         validate: {
                           minLength: (v) => v.length >= 5
-                        },
+                        }
                       })}
                       type="text"
                       value={taskTitle}
@@ -111,9 +112,9 @@ function Body() {
                       }}
                       required
                     />
-                     {/* {errors.title?.type === "minLength" && (
-    <small>The username should have at least 5 characters</small>
-  )} */}
+                     {errors.title?.type === "minLength" && (
+                <small>The username should have at least 5 characters</small>
+                 )}
                      
 
                   </div>
@@ -122,7 +123,7 @@ function Body() {
                     <input
                       type="date"
                       id="date"
-                      {...register('date')}
+                      {...register ('date')}
                       value={taskDate}
                       onChange={handleDate}
                       style={{
@@ -131,11 +132,9 @@ function Body() {
                         borderRadius: "10px",
                         padding: "10px",
                       }}
-                      placeholder="20 Feb 2024"
                       required
                     />
-                    {/* <span>{taskDate.length <= 1 ? "Date must be more than 2 Character" : ""}</span> */}
-                  </div>
+          </div>
                   <div className="inputDiv">
                     <label htmlFor="desc">Desscription: </label>
                     <input
@@ -152,11 +151,13 @@ function Body() {
                       }}
                       required
                     />
-                    {/* <span>{taskDesc.length <= 1 ? "Descripton must be more than 2 Character" : ""}</span> */}
+                    {errors.title?.type === "minLength" && (
+                <small>The Description should have at least 10 characters</small>
+                 )}
                   </div>
-                    {taskTitle.length >= 1 && taskDate.length >= 1 && taskDesc.length >= 1 ? (<>
-                      <button className="add" type="submit" onClick={addItem}>
-                    Add
+                    {taskTitle.length >= 5 && taskDesc.length > 9 ? (<>
+                    <button className="add" type="submit" onClick={addItem}>
+                    Create
                   </button></>) : (<>
                   <button className="add" style={{backgroundColor: "red"}}>Invalid</button>
                   </>)}
