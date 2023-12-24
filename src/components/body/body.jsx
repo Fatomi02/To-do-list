@@ -155,7 +155,7 @@ function Body() {
                     {/* <span>{taskDesc.length <= 1 ? "Descripton must be more than 2 Character" : ""}</span> */}
                   </div>
                     {taskTitle.length >= 1 && taskDate.length >= 1 && taskDesc.length >= 1 ? (<>
-                      <button className="add" type="submit" onClick={addItem}>
+                      <button className="add" type="submit" style={{color: "black"} onClick={addItem}>
                     Add
                   </button></>) : (<>
                   <button className="add" style={{backgroundColor: "red"}}>Invalid</button>
