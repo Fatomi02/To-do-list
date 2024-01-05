@@ -18,6 +18,26 @@ header {
     cursor: pointer;
 }
 
+.movebtn {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    padding: 3px 10px;
+    display: none;
+    font-size: 10px;
+    display: block;
+    background-color: rgb(177, 233, 233);
+}
+
+.btn {
+    width: 80px;
+    margin: 2px 0px;
+}
+
+.item-icon {
+    position: relative;
+}
+
 
 
 .body {
