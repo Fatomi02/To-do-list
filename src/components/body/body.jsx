@@ -4,7 +4,6 @@ import "./body.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditableText from "../edit/edit";
 import { lists } from "../../services/user-details";
-import { useForm } from "react-hook-form";
 
 function Body() {
   const [newTask, setNewTask] = useState(lists);
@@ -13,13 +12,10 @@ function Body() {
   const [taskDesc, setTaskDesc] = useState("");
   const [items, setItems] = useState(lists.list);
   const [todos, setTodos] = useState([]);
+  const [errorOne, setErrorOne] = useState(false)
+  const [errorTwo, setErrorTwo] = useState(false)
   const inputRef = useRef(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   const handleTitle = (e) => {
     setTaskTitle(e.target.value);
@@ -44,25 +40,32 @@ function Body() {
   };
 
   const addItem = () => {
-    if (taskTitle.length >= 1 && taskDate.length >= 1 && taskDesc.length >= 1) {
-      const generatedId = Math.floor(Math.random() * 1000 + 5);
-      const newArr = {
-        id: generatedId,
-        title: taskTitle,
-        date: taskDate,
-        description: taskDesc,
-        isEditing: false,
-        status: "todo",
-      };
-      setNewTask(newArr);
-      items.push(newArr);
-      clearInput();
-      document.querySelector(".addingItemDiv").style.display = "none";
-    }
+      if(taskTitle.length < 5 || taskDesc.length < 10){
+        setErrorOne(true);
+        setErrorTwo(true)
+      }
+      else {
+        const generatedId = Math.floor(Math.random() * 1000 + 5);
+        const newArr = {
+          id: generatedId,
+          title: taskTitle,
+          date: taskDate,
+          description: taskDesc,
+          isEditing: false,
+          status: "todo",
+          btn: false,
+        };
+        setNewTask(newArr);
+        items.push(newArr);
+        clearInput();
+        document.querySelector(".addingItemDiv").style.display = "none";
+      }
   };
 
   const close = () => {
     document.querySelector(".addingItemDiv").style.display = "none";
+    setErrorOne(false)
+    setErrorTwo(false)
     clearInput();
   };
 
@@ -110,6 +113,17 @@ function Body() {
       inputRef.current.focus();
     }
   }, [todos.isEditing]);
+
+  useEffect(()=> {
+    if(taskTitle.length > 5){
+      setErrorOne(false)
+    }
+  })
+  useEffect(()=> {
+    if(taskDesc.length > 10) {
+      setErrorTwo(false)
+    }
+  })
 
   useEffect(() => {
     setTodos(lists.list);
@@ -563,17 +577,11 @@ function Body() {
                   style={{ color: "#111213" }}
                 />
                 <div className="addingItemDiv">
-                  <form onSubmit={handleSubmit((d) => console.log(d))}>
+                  <form>
                     <div className="inputDiv">
                       <label htmlFor="title">Title: </label>
                       <input
                         id="title"
-                        {...register("title", {
-                          required: true,
-                          validate: {
-                            minLength: (v) => v.length >= 5,
-                          },
-                        })}
                         type="text"
                         value={taskTitle}
                         onChange={handleTitle}
@@ -585,18 +593,13 @@ function Body() {
                         }}
                         required
                       />
-                      {errors.title?.type === "minLength" && (
-                        <small>
-                          The username should have at least 5 characters
-                        </small>
-                      )}
+                      {errorOne ? <><small>The title should be more than 5 character</small></> : <></>}
                     </div>
                     <div className="inputDiv">
                       <label htmlFor="date">Date: </label>
                       <input
                         type="date"
                         id="date"
-                        {...register("date")}
                         value={taskDate}
                         onChange={handleDate}
                         style={{
@@ -612,12 +615,6 @@ function Body() {
                       <label htmlFor="desc">Desscription: </label>
                       <input
                         id="desc"
-                        {...register("desc", {
-                          required: true,
-                          validate: {
-                            minLength: (v) => v.length >= 5,
-                          },
-                        })}
                         type="text"
                         value={taskDesc}
                         onChange={handleDesc}
@@ -629,23 +626,11 @@ function Body() {
                         }}
                         required
                       />
-                      {errors.desc?.type === "minLength" && (
-                        <small>
-                          The Description should have at least 10 characters
-                        </small>
-                      )}
+                    {errorTwo ? <><small>The description should be more than 10 character</small></> : <></>}
                     </div>
-                    {taskTitle.length >= 5 && taskDesc.length > 9 ? (
-                      <>
                         <button className="add" onClick={addItem}>
                           Create
                         </button>
-                      </>
-                    ) : (
-                      <>
-                        <button className="add">Invalid</button>
-                      </>
-                    )}
                     <button className="add" onClick={close}>
                       Close
                     </button>
