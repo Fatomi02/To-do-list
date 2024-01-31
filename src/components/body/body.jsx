@@ -6,7 +6,6 @@ import EditableText from "../edit/edit";
 import { lists } from "../../services/user-details";
 
 function Body() {
-  const [newTask, setNewTask] = useState(lists);
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskDesc, setTaskDesc] = useState("");
@@ -55,8 +54,7 @@ function Body() {
           status: "todo",
           btn: false,
         };
-        setNewTask(newArr);
-        items.push(newArr);
+        setTodos([...todos, newArr])
         clearInput();
         document.querySelector(".addingItemDiv").style.display = "none";
       }
@@ -118,16 +116,16 @@ function Body() {
     if(taskTitle.length > 5){
       setErrorOne(false)
     }
-  })
+  }, [taskTitle.length])
   useEffect(()=> {
     if(taskDesc.length > 10) {
       setErrorTwo(false)
     }
-  })
+  }, [taskDesc.length])
 
   useEffect(() => {
     setTodos(lists.list);
-  }, []);
+  }, [setTodos]);
 
   const show = (id) => {
     const copyItems = [...todos];
