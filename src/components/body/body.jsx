@@ -39,9 +39,11 @@ function Body() {
   };
 
   const addItem = () => {
-      if(taskTitle.length < 5 || taskDesc.length < 10){
+      if(taskTitle.length < 5){
         setErrorOne(true);
-        setErrorTwo(true)
+      }
+      else if(taskDesc.length < 10){
+        setErrorTwo(true);
       }
       else {
         const generatedId = Math.floor(Math.random() * 1000 + 5);
