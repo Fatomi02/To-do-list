@@ -569,15 +569,15 @@ function Body() {
                   onClick={addNewItem}
                   icon="fa-solid fa-plus"
                   size="lg"
-                  style={{ color: "#111213", marginRight: "30px" }}
+                  style={{ color: "#111213", marginRight: "-10px" }}
                 />
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                   icon="fa-solid fa-ellipsis-vertical"
                   size="lg"
                   style={{ color: "#111213" }}
-                />
+                /> */}
                 <div className="addingItemDiv">
-                  <form>
+                  {/* <form> */}
                     <div className="inputDiv">
                       <label htmlFor="title">Title: </label>
                       <input
@@ -634,7 +634,7 @@ function Body() {
                     <button className="add" onClick={close}>
                       Close
                     </button>
-                  </form>
+                  {/* </form> */}
                 </div>
               </div>
             </div>
@@ -657,13 +657,13 @@ function Body() {
               <div>
                 <h2>In Progress</h2>
               </div>
-              <div className="icon">
+              {/* <div className="icon">
                 <FontAwesomeIcon
                   icon="fa-solid fa-ellipsis-vertical"
                   size="lg"
                   style={{ color: "#111213" }}
                 />
-              </div>
+              </div> */}
             </div>
           </header>
           {inProgressList}
@@ -674,13 +674,13 @@ function Body() {
               <div>
                 <h2>Done</h2>
               </div>
-              <div className="icon">
+              {/* <div className="icon">
                 <FontAwesomeIcon
                   icon="fa-solid fa-ellipsis-vertical"
                   size="lg"
                   style={{ color: "#111213" }}
                 />
-              </div>
+              </div> */}
             </div>
           </header>
           {doneList}
